@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { map, throttleTime, filter, switchMap } from "rxjs/operators";
 import { Observable } from "rxjs";
-import { Movie, MovieApiService } from 'src/app/core';
+import { Movie, Comment, MovieApiService } from 'src/app/core';
 
 @Component({
     selector: 'movie-details',
@@ -15,6 +15,7 @@ export class MovieDetailsComponent implements OnInit {
         public restApi: MovieApiService
     ) {}
 
+    comments: Comment[] = [];
     movie: Movie | undefined;
     routeID: number | undefined;
 
@@ -23,14 +24,8 @@ export class MovieDetailsComponent implements OnInit {
         this.route.params.subscribe((params) => {
             this.routeID = params['id'];
             this.loadMovie(params['id']);
+            this.loadComments(params['id']);
         });        
-    }
-  
-    get movieID() {
-      return this.route.params.pipe(map(({ id }) => 
-        this.loadMovie(+id),
-        console.log('hello' + this.movie)
-      ));
     }
 
     loadMovie(id: number) {
@@ -40,5 +35,14 @@ export class MovieDetailsComponent implements OnInit {
           this.movie = data as Movie;
           console.log(this.movie);
         })
-      }
+    }
+
+    loadComments(id: number) {
+        return this.restApi.getCommentsByMovie(id).subscribe((data: {}) => {
+            console.log(typeof(data))
+            console.log(data);
+            this.comments = data as Comment[];
+            console.log('Comments',this.comments);
+          })
+    }
 };

@@ -17,17 +17,14 @@
 </mat-card>
 <mat-card class="mat-elevation-z5">
   <mat-card-title-group>
-    <mat-card-title>{{movie?.title}}</mat-card-title>
+    <mat-card-title>Comments</mat-card-title>
   </mat-card-title-group>
   <mat-card-content>
     <div class="flex-row">
-      <div class="image">
-        <img  src="{{movie?.poster_url}}" >
-      </div>
       <div class="details">
-        <p>Gross: {{movie?.gross}}</p>
-        <p>Release Date: {{movie?.release_date}}</p>
-        <p>Studio: {{movie?.studio}}</p>
+        <div *ngFor="let c of comments">
+          <p>{{c.username}}: {{c.text}}</p>
+        </div>
       </div>
     </div>
   </mat-card-content>
