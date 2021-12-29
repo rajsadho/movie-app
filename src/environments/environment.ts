@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://dcitmovieapi.herokuapp.com/'
+  apiUrl: 'https://dcitmovieapi.herokuapp.com/api'
 };
 
 /*

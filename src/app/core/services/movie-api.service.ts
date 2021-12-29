@@ -24,7 +24,7 @@ export class MovieApiService {
 
   // GET: returns an Observable of all Movies
   getMovies() {
-    return this.http.get<Movie>(this.apiUrl + '/api/movies')
+    return this.http.get<Movie>(this.apiUrl + '/movies')
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -33,7 +33,7 @@ export class MovieApiService {
 
   // GET: returns an Observable of Movie
   getMovie(movieId: number) {
-    return this.http.get<Movie>(this.apiUrl + '/api/movies/' + movieId)
+    return this.http.get<Movie>(this.apiUrl + '/movies/' + movieId)
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -42,7 +42,7 @@ export class MovieApiService {
 
   // GET: returns an Observable of all Comments for a Movie
   getCommentsByMovie(movieId: number) {
-    return this.http.get<Comment>(this.apiUrl + '/api/movies/' + movieId + '/comments')
+    return this.http.get<Comment>(this.apiUrl + '/movies/' + movieId + '/comments')
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -51,7 +51,7 @@ export class MovieApiService {
 
   // POST: add a new comment to the database 
   addHero(comment: Comment): Observable<Comment> {
-    return this.http.post<Comment>(this.apiUrl + '/api/comments', JSON.stringify(comment), this.httpOptions)
+    return this.http.post<Comment>(this.apiUrl + '/comments', JSON.stringify(comment), this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
@@ -59,7 +59,7 @@ export class MovieApiService {
 
   // DELETE: remove a comment from the database
   deleteEmployee(commentId: number){
-    return this.http.delete<Comment>(this.apiUrl + '/api/comments/' + commentId)
+    return this.http.delete<Comment>(this.apiUrl + '/comments/' + commentId)
     .pipe(
       retry(1),
       catchError(this.handleError)
