@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Movie, Comment, MovieApiService } from 'src/app/core';
 
 @Component({
@@ -15,8 +15,10 @@ export class MovieDetailsComponent implements OnInit {
         private restApi: MovieApiService
     ) {}
 
+    @ViewChild('formDirective') private formDirective: NgForm | undefined;
+
     submitted = false;
-    registerForm = this.formBuilder.group({
+    commentForm = this.formBuilder.group({
         username: ['', Validators.required],
         text: ['', Validators.required]
     });
@@ -27,29 +29,23 @@ export class MovieDetailsComponent implements OnInit {
     newComment: Object = {};
 
     ngOnInit() {
-        console.log('Hello');
         this.route.params.subscribe((params) => {
             this.routeID = params['id'];
             this.loadMovie(params['id']);
             this.loadComments(params['id']);
-        });     
+        });  
+        // this.resetForm();  
     }
 
     loadMovie(id: number) {
         return this.restApi.getMovie(id).subscribe((data: {}) => {
-          console.log(typeof(data))
-          console.log(data);
           this.movie = data as Movie;
-          console.log(this.movie);
         })
     }
 
     loadComments(id: number) {
         return this.restApi.getCommentsByMovie(id).subscribe((data: {}) => {
-            console.log(typeof(data))
-            console.log(data);
             this.comments = data as Comment[];
-            console.log('Comments',this.comments);
           })
     }
 
@@ -58,33 +54,28 @@ export class MovieDetailsComponent implements OnInit {
         this.comments = this.comments.filter(e => e.id != id);
     }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
+    // getter for form fields
+    get f() { return this.commentForm.controls; }
 
     control(abs: AbstractControl) { return abs as FormControl }
 
     onSubmit() {
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
+        if (this.commentForm.invalid) {
             return;
         }
 
-        const req = {...this.registerForm.value, movie_id: this.routeID}
+        const req = {...this.commentForm.value, movie_id: this.routeID}
 
-        console.log(JSON.stringify(req as Comment));
+        this.resetForm();
 
         this.restApi.addComment(req as Comment).subscribe((data: {}) => {
             console.log(data);
             this.loadComments(this.routeID!);
           });
-        // display form values on success
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(req, null, 4));
     }
 
-
-    getErrorMessage() {
-
+    resetForm() {
+        this.commentForm.reset();
+        this.formDirective?.resetForm();
     }
 };
