@@ -24,7 +24,7 @@ export class MovieApiService {
 
   // GET: returns an Observable of all Movies
   getMovies() {
-    return this.http.get<Movie>(this.apiUrl + '/movies')
+    return this.http.get<Movie[]>(this.apiUrl + '/movies')
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -42,7 +42,7 @@ export class MovieApiService {
 
   // GET: returns an Observable of all Comments for a Movie
   getCommentsByMovie(movieId: number) {
-    return this.http.get<Comment>(this.apiUrl + '/movies/' + movieId + '/comments')
+    return this.http.get<Comment[]>(this.apiUrl + '/movies/' + movieId + '/comments')
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -50,7 +50,7 @@ export class MovieApiService {
   }
 
   // POST: add a new comment to the database 
-  addHero(comment: Comment): Observable<Comment> {
+  addComment(comment: Comment): Observable<Comment> {
     return this.http.post<Comment>(this.apiUrl + '/comments', JSON.stringify(comment), this.httpOptions)
       .pipe(
         catchError(this.handleError)
@@ -58,7 +58,7 @@ export class MovieApiService {
   }
 
   // DELETE: remove a comment from the database
-  deleteEmployee(commentId: number){
+  deleteComment(commentId: number){
     return this.http.delete<Comment>(this.apiUrl + '/comments/' + commentId)
     .pipe(
       retry(1),

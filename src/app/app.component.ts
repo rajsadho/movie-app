@@ -10,20 +10,20 @@ export class AppComponent {
   title = 'movie-app';
 
 
-  Movies: any = [];
+  // Movies: any = [];
 
-  constructor(
-    public restApi: MovieApiService
-  ) { }
+  // constructor(
+  //   public restApi: MovieApiService
+  // ) { }
 
-  ngOnInit() {
-    this.loadMovies();
-  }
+  // ngOnInit() {
+  //   this.loadMovies();
+  // }
 
-  loadMovies() {
-    return this.restApi.getMovies().subscribe((data: {}) => {
-      this.Movies = data;
-      console.log(this.Movies);
-    })
-  }
+  // loadMovies() {
+  //   return this.restApi.getMovies().subscribe((data: {}) => {
+  //     this.Movies = data;
+  //     console.log(this.Movies);
+  //   })
+  // }
 }
