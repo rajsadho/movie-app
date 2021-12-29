@@ -16,6 +16,8 @@ export class MoviesContainerComponent {
                 private router: Router) { }
 
     onRowClick(id: any) {
-        this.router.navigate(["employees", id]);
+        console.log(id);
+
+        this.router.navigate(["movies", id]);
         }
 };
