@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from "rxjs";
-import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
-import { filter, switchMap, map, tap } from "rxjs/operators";
+import { ActivatedRoute, Router } from "@angular/router";
 
 
 @Component({

@@ -17,3 +17,13 @@
         margin-left: auto;
     }
   }
+
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+  
+    > div {
+      flex: 50%;
+      padding: 10px;
+    }
+  }

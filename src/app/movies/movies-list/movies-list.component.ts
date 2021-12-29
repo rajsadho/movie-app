@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MovieApiService } from 'src/app/core';
 import { Movie } from 'src/app/core';
 
@@ -7,7 +7,7 @@ import { Movie } from 'src/app/core';
     templateUrl: './movies-list.component.html'
 })
 
-export class MoviesListComponent { 
+export class MoviesListComponent implements OnInit{ 
     MovieList: Movie[] = [];
 
     movie: Movie | undefined;

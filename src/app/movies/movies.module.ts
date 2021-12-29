@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
+// import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 import { MovieCommentsComponent } from './movie-comments/movie-comments.component';
@@ -12,6 +14,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card'; 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -21,19 +26,23 @@ import { MatButtonModule } from '@angular/material/button';
     MoviesListComponent
   ],
   imports: [
+    // CommonModule,
     BrowserModule,
     RouterModule,
+    ReactiveFormsModule,
     MatSidenavModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     MovieCommentsComponent,
     MovieDetailsComponent,
     MoviesContainerComponent,
-    MoviesListComponent,
-    MatIconModule
+    MoviesListComponent
   ]
 })
 export class MoviesModule { }

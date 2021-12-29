@@ -18,7 +18,8 @@ import { MoviesModule } from './movies/movies.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    MoviesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

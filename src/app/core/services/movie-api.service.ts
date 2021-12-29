@@ -50,7 +50,7 @@ export class MovieApiService {
   }
 
   // POST: add a new comment to the database 
-  addComment(comment: Comment): Observable<Comment> {
+  addComment(comment: Comment): Observable<any> {
     return this.http.post<Comment>(this.apiUrl + '/comments', JSON.stringify(comment), this.httpOptions)
       .pipe(
         catchError(this.handleError)
