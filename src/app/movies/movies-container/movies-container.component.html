@@ -1,0 +1,10 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened="true" class="example-sidenav">
+    <movies-list (rowClick)="onRowClick($event)">
+      <!-- <movies-list> -->
+    </movies-list>
+  </mat-drawer>
+  <mat-drawer-content class="example-sidenav-content">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

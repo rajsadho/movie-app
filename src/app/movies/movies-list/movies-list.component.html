@@ -1,0 +1,12 @@
+<h3>List of Movies</h3>
+  
+<!-- Show it when there is no employee -->
+<div class="no-data text-center" *ngIf="MovieList.length == 0">
+  <p>No movies found!</p>
+</div>
+
+<div *ngFor="let m of MovieList">
+  <a href="#" (click)="onclick(m.id); (false)">
+    <h5>{{ m.title }}</h5>
+  </a>
+</div>

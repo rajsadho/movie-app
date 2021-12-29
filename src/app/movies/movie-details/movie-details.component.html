@@ -1,0 +1,58 @@
+<!-- Movie statistics Card -->
+<mat-card class="mat-elevation-z5">
+  <mat-card-title-group>
+    <mat-card-title>{{movie?.title}}</mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content>
+    <div class="flex-row">
+      <div class="image">
+        <img  src="{{movie?.poster_url}}" >
+      </div>
+      <div class="details">
+        <p>Gross: {{movie?.gross}}</p>
+        <p>Release Date: {{movie?.release_date}}</p>
+        <p>Studio: {{movie?.studio}}</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- Comments card  -->
+
+<mat-card class="mat-elevation-z5">
+  <mat-card-title-group>
+    <mat-card-title>Comments</mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content>
+    <section class="comment-form">
+      <h3>Post a comment:</h3>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="flex-column">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Your username here" [formControl]="control(f['username'])" required>
+          <mat-error *ngIf="f['username'].errors">Required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Comment</mat-label>
+          <textarea matInput placeholder="What did you think about the movie?" [formControl]="control(f['text'])" required></textarea>
+          <mat-error *ngIf="f['text'].errors">Required</mat-error>
+        </mat-form-field>
+        <!-- Submit -->
+        <div class="button-wrapper">
+          <button mat-flat-button color="primary">Submit</button>
+        </div>
+      </form>
+    </section>
+    <mat-divider></mat-divider>
+    <div class="details">
+      <div *ngFor="let c of comments">
+          <div class="flex-row-comment">
+          <p>{{c.username}}: {{c.text}}</p>
+          <button mat-icon-button color="warn" aria-label="Comment delete button" (click)="deleteComment(c.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
