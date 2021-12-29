@@ -7,3 +7,13 @@
       padding: 10px;
     }
   }
+
+.flex-row-comment {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+
+    > button {
+        margin-left: auto;
+    }
+  }

@@ -20,10 +20,14 @@
     <mat-card-title>Comments</mat-card-title>
   </mat-card-title-group>
   <mat-card-content>
-    <div class="flex-row">
-      <div class="details">
-        <div *ngFor="let c of comments">
+    
+    <div class="details">
+      <div *ngFor="let c of comments">
+          <div class="flex-row-comment">
           <p>{{c.username}}: {{c.text}}</p>
+          <button mat-icon-button color="warn" aria-label="Comment delete button">
+            <mat-icon>delete</mat-icon>
+          </button>
         </div>
       </div>
     </div>

@@ -9,7 +9,9 @@ import { MoviesContainerComponent } from './movies-container/movies-container.co
 import { MoviesListComponent } from './movies-list/movies-list.component';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatCardModule} from '@angular/material/card'; 
+import { MatCardModule } from '@angular/material/card'; 
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,16 @@ import {MatCardModule} from '@angular/material/card';
     BrowserModule,
     RouterModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [
     MovieCommentsComponent,
     MovieDetailsComponent,
     MoviesContainerComponent,
-    MoviesListComponent
+    MoviesListComponent,
+    MatIconModule
   ]
 })
 export class MoviesModule { }
