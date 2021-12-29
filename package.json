@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "mock:server": "json-server --watch -p 3159 mockDB/db.json --fks _id"
   },
   "private": true,
   "dependencies": {

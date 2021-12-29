@@ -1,0 +1,48 @@
+{
+    "movies": [
+        {
+            "gross": "$714,766,572.00",
+            "id": 1,
+            "poster_url": "https://resizing.flixster.com/gxRJwetP1eNIrPR6xlWBfD_VaFc=/180x267/dkpu1ddg7pbsk.cloudfront.net/movie/11/17/72/11177246_ori.jpg",
+            "release_date": "04-Apr-14",
+            "studio": "Marvel Studios",
+            "title": "Captain America: The Winter Soldier"
+        },
+        {
+            "gross": "$708,835,589.00",
+            "id": 2,
+            "poster_url": "https://resizing.flixster.com/gDtbA1iPxTYEjBZeSsIYktCtUiw=/180x270/dkpu1ddg7pbsk.cloudfront.net/movie/11/18/91/11189194_ori.jpg",
+            "release_date": "11-Jul-14",
+            "studio": "20th Century Fox",
+            "title": "Dawn of the Planet of the Apes"
+        },
+        {
+            "gross": "$774,176,600.00",
+            "id": 3,
+            "poster_url": "https://resizing.flixster.com/YrF_OeTQx3bXNsMLIy_NocjA4wI=/180x267/dkpu1ddg7pbsk.cloudfront.net/movie/11/17/80/11178082_ori.jpg",
+            "release_date": "01-Aug-14",
+            "studio": "Marvel Studios",
+            "title": "Guardians of the Galaxy"
+        }
+    ],
+    "comments": [
+        {
+            "id": 1,
+            "movie_id": 1,
+            "text": "test1",
+            "username": "Bob"
+        },
+        {
+            "id": 2,
+            "movie_id": 1,
+            "text": "test2",
+            "username": "Bob"
+        },
+        {
+            "id": 3,
+            "movie_id": 2,
+            "text": "test3",
+            "username": "Bob"
+        }
+    ]
+}
