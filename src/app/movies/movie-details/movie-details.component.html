@@ -26,7 +26,7 @@
   <mat-card-content>
     <section class="comment-form">
       <h3>Post a comment:</h3>
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="flex-column">
+      <form [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="flex-column" #formDirective="ngForm" onload="resetForm()">
         <mat-form-field appearance="fill">
           <mat-label>Username</mat-label>
           <input matInput placeholder="Your username here" [formControl]="control(f['username'])" required>
